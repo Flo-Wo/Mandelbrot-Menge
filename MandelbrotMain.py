@@ -31,25 +31,26 @@ def deltacalc(xmin, xmax, ymin, ymax):
 
 w.focus_set()
 
-#Eingabe von xMax
+#Eingabe von xMin
 e1 = tkinter.Entry(fenster)
 e1.pack()
 e1.focus_set()
 
-xmin = tkinter.IntVar()
-xmax = tkinter.IntVar()
-ymin = tkinter.IntVar()
+xmin = tkinter.DoubleVar()
+xmax = tkinter.DoubleVar()
+ymin = tkinter.DoubleVar()
 
 def callbackxMax():
-    #print(e1.get())
     xmin = e1.get()
-    #print("xMin: " + xmin)
+    #Tkinter eigene Variablen Typen, über .get() wird der Wert ausgegeben und in int() konvertiert
+    xmin = int(xmin)
+    return(xmin)
 
-b = tkinter.Button(fenster, text="xmin eingeben:", width=10, command=callbackxMax)
+b = tkinter.Button(fenster, text="xMin eingeben:", width=10, command=callbackxMax)
 b.pack()
 
 
-#Eingabe xMin
+#Eingabe xMax
 e2 = tkinter.Entry(fenster)
 e2.pack()
 e2.focus_set()
@@ -59,9 +60,12 @@ xmin = tkinter.IntVar()
 def callbackxMin():
     #print(e1.get())
     xmax = e2.get()
-    #print("xMax: " + xmax)
+    xmax = int(xmax)
+    print(xmax)
+    print(type(xmax))
+    return(xmax)
 
-b = tkinter.Button(fenster, text="xmax eingeben:", width=10, command=callbackxMin)
+b = tkinter.Button(fenster, text="xMax eingeben:", width=10, command=callbackxMin)
 b.pack()
 
 
@@ -75,19 +79,20 @@ xmin = tkinter.IntVar()
 def callbackyMin():
     #print(e1.get())
     ymin = e3.get()
-    #print("yMin: " + ymin)
+    ymin = int(ymin)
+    print(ymin)
+    print(type(ymin))
+    return(ymin)
 
 b = tkinter.Button(fenster, text="ymin eingeben:", width=10, command=callbackyMin)
 b.pack()
 
 
 #Berechung ymax --> Fenstergröße
+#ymax = xmax - xmin + ymin
 
-# ymax = xmax - xmin + ymin
-# print(xmin)
-# print(xmax)
-# print(ymin)
-# print(ymax)
+
+#print(ymax)
 #deltacalc()
 #Durchgehen aller x-Werte
 # for xpixel in range(0, 500):
