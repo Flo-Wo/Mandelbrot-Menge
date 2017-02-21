@@ -5,9 +5,11 @@ Date: 21.02.2017
 
 #Modul für die graphische Darstellung
 import tkinter
-#Mathematikmodul
+
+#Mathematikmodul, beispielsweise für das Quadrieren benötigt
 import math
-#eigenes Modul für die Farbwahl
+
+#eigenes Modul für die Farbwahl, siehe farben.py
 import farben
 
 
@@ -28,6 +30,9 @@ fenster = tkinter.Tk()
 fenster.title("Die Mandelbrot-Menge.")
 
 #Erzeugen der Zeichenoberfläche aus dem tkinter-Modul
+#Bedeutung der Parameter:
+    #fenster: Canvas befindet sich im oben erstellen Fenster
+    #width und heigt: oben festgelegte Höhe und Breite
 w = tkinter.Canvas(fenster, width=xwidth, height=yheight)
 #Ohne .pack() wird diese nicht korrekt dargestellt
 w.pack()
@@ -41,6 +46,7 @@ while True:
     ymin = int(input("yMin eingeben: "))
     
     #Löschen aller Objekte auf der Zeichenoberfläche --> Überschreibung beim Zoom nötig
+    #Bei jeder neuen Eingabe wird das Löschen der alten Darstellung und damit das Überschreiben eingeleitet
     w.delete("all")
     #Berechnung ymax --> eine Eingabe weniger
     ymax = (xmax - xmin) + ymin
@@ -92,11 +98,11 @@ while True:
             #-------------
             color = farben.farbwahl(n)
             #Erzeugung des Pixels einzelnen Pixels an der Position (cr/ci)
-            #Paramter der reactangle-Funktion:
-                #Wert 1 und 2: Koordinaten der "Starposition"
+            #Bedeutung der Paramter der rectangle-Funktion:
+                #Wert 1 und 2: Koordinaten der "Startposition"
                 #Wert 2 und 3: Koordinaten der "Endposition"
                 #die beiden Punkte spannen die Ecken des Rechtecks auf
                 #fill: Füllfarbe, die das Modul übergibt
-                #width: Dicke des Randes, der standardmäßig schwarz ist --> kein Rand
-            #w. bezieht sich auf die Zeichenfläche (Canvas, oben erstellt)
+                #width: Dicke des Randes, der standardmäßig schwarz ist, width=0 --> keinen Rand
+            # w. bezieht sich auf die Zeichenfläche (Canvas, oben erstellt)
             w.create_rectangle(xpixel, ypixel, xpixel, ypixel , fill=color, width=0)
