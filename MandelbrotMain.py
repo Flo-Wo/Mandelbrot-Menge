@@ -3,13 +3,15 @@
 Date: 21.02.2017
 """
 
+#Modul für die graphische Darstellung
 import tkinter
+#Mathematikmodul
 import math
 #eigenes Modul für die Farbwahl
 import farben
 
 
-#Falls Änderung der Größe des Fensters
+#Falls Änderung der Größe des Fensters, alle weiteren Angaben sind relativ
 xwidth = 500
 yheight = 500
 
@@ -19,19 +21,21 @@ deltax = None
 deltay = None
 
 
-#Erzeugung des Fensters
+#Erzeugung des Fensters aus dem tkinter-Modul
 #Fenster bleibt, Canvas immer überschrieben
 fenster = tkinter.Tk()
+#Titel des erzeugten Fensters
 fenster.title("Die Mandelbrot-Menge.")
 
-#Erzeugen der Zeichenoberfläche
+#Erzeugen der Zeichenoberfläche aus dem tkinter-Modul
 w = tkinter.Canvas(fenster, width=xwidth, height=yheight)
+#Ohne .pack() wird diese nicht korrekt dargestellt
 w.pack()
 
 
-
+#Endlosschleife
 while True:
-    #Eingabe
+    #Eingaben der Breite und Höhe des anzuzeigenden Bereichs
     xmin = int(input("xMin eingeben: "))
     xmax = int(input("xMax eingeben: "))
     ymin = int(input("yMin eingeben: "))
@@ -52,23 +56,24 @@ while True:
             #Berechnung Imaginärteil des Parameters c
             ci = ymin + (ypixel * deltay)
             #-------------
-            #Pixel ist jetzt bekannt (cr/ci))
+            #Position des Pixels ist jetzt bekannt (cr/ci))
             #-------------
             #Iterationschritte für jeden Pixel --> rekursive Folge durchlaufen
             #-------------
             #Wert des Realteils
             zi = 0
-            #Wert des
+            #Wert des Imaginärteils
             zr = 0
             #Entweder Abstand zum Ursprung größer als 2 --> divergiert mit Sicherheit
             #oder maximal 100 Iterationsschritte, bis dahin keine Divergenz --> innerhalb der Menge
-            #je schneller etwas konvergiert, desto dunkler
+            #je schneller der Wert konvergiert, desto dunkler die Farbe des Pixels --> Verweis Farbmodul
 
-            #Zähler Iterationsschritte
+            #Zähler Iterationsschritte initialisiert
             n = 0
             while ((zr**2 + zi**2)<=2) and n <= 100:
                 #-------------
-                #Komplexe Multiplikation laut: z_(n+1) = z_(n)^2 + c
+                #Rekursive Folge lautet: z_(n+1) = z_(n)^2 + c
+                #Komplexe Multiplikation durchführen
                 #-------------
 
                 #Neuer Realteil
@@ -83,7 +88,15 @@ while True:
                 n += 1
             #-------------
             #Vergeben Farbe Pixel, wenn die Schleife abbricht --> Wert divergiert, geht -> infty
-            #Farbüberprüfung über Farbmodul
+            #Modul gibt über return(color) die Farbe zurück
             #-------------
             color = farben.farbwahl(n)
+            #Erzeugung des Pixels einzelnen Pixels an der Position (cr/ci)
+            #Paramter der reactangle-Funktion:
+                #Wert 1 und 2: Koordinaten der "Starposition"
+                #Wert 2 und 3: Koordinaten der "Endposition"
+                #die beiden Punkte spannen die Ecken des Rechtecks auf
+                #fill: Füllfarbe, die das Modul übergibt
+                #width: Dicke des Randes, der standardmäßig schwarz ist --> kein Rand
+            #w. bezieht sich auf die Zeichenfläche (Canvas, oben erstellt)
             w.create_rectangle(xpixel, ypixel, xpixel, ypixel , fill=color, width=0)
