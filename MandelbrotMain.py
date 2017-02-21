@@ -23,6 +23,7 @@ deltay = None
 #Fenster bleibt, Canvas immer überschrieben
 fenster = tkinter.Tk()
 fenster.title("Die Mandelbrot-Menge.")
+
 #Erzeugen der Zeichenoberfläche
 w = tkinter.Canvas(fenster, width=xwidth, height=yheight)
 w.pack()
@@ -34,18 +35,14 @@ while True:
     xmin = int(input("xMin eingeben: "))
     xmax = int(input("xMax eingeben: "))
     ymin = int(input("yMin eingeben: "))
-    #Löschen aller Objekte auf der Zeichenoberfläche
-    #Überschreibung beim Zoom nötig
+    
+    #Löschen aller Objekte auf der Zeichenoberfläche --> Überschreibung beim Zoom nötig
     w.delete("all")
     #Berechnung ymax --> eine Eingabe weniger
     ymax = (xmax - xmin) + ymin
     #Berechnung der beiden Deltas --> Schritte
     deltax = (xmax - xmin)/xwidth
     deltay = (ymax - ymin)/yheight
-
-    #Erzeugen Canvas (Zeichenoberfläche)
-    #w = tkinter.Canvas(fenster, width=xwidth, height=yheight)
-    #w.pack()
 
     #Durchgehen der einzelnen Pixel in Form einer 2-dimensionalen Liste
     for xpixel in range(0, xwidth):
