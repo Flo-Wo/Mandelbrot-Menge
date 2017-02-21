@@ -70,12 +70,15 @@ while True:
             zi = 0
             #Wert des Imaginärteils
             zr = 0
-            #Entweder Abstand zum Ursprung größer als 2 --> divergiert mit Sicherheit
+            
+            #Entweder Abstand (Betrag der komplexen Zahl )zum Ursprung größer als 2 --> divergiert mit Sicherheit
             #oder maximal 100 Iterationsschritte, bis dahin keine Divergenz --> innerhalb der Menge
             #je schneller der Wert konvergiert, desto dunkler die Farbe des Pixels --> Verweis Farbmodul
 
             #Zähler Iterationsschritte initialisiert
             n = 0
+            
+            #Abbruchbedingung
             while ((zr**2 + zi**2)<=2) and n <= 100:
                 #-------------
                 #Rekursive Folge lautet: z_(n+1) = z_(n)^2 + c
@@ -93,7 +96,7 @@ while True:
                 #Erhöhung Iterationschritt
                 n += 1
             #-------------
-            #Vergeben Farbe Pixel, wenn die Schleife abbricht --> Wert divergiert, geht -> infty
+            #Vergeben der Farbe des Pixels wenn die Schleife abbricht --> Wert divergiert, geht gegen unendlich
             #Modul gibt über return(color) die Farbe zurück
             #-------------
             color = farben.farbwahl(n)
