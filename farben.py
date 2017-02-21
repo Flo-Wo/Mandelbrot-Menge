@@ -4,8 +4,7 @@
 Date: 21.02.2017
 """
 
-#Der Wert n (Anzahl der Iterationsschritte) wird übergeben, Farbe soll
-#Ausgabe sein
+#Der Wert n (Anzahl der Iterationsschritte) wird übergeben, Farbe soll Ausgabe sein
 
 
 def farbwahl(n):
@@ -99,4 +98,5 @@ def farbwahl(n):
     else:
         #bei 100 Iterationsschritten keine Divergenz --> Konvergenz, in der Mandelbrot-Menge
         color = "black"
+        #Schwarz
     return(color)
