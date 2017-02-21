@@ -32,7 +32,7 @@ fenster.title("Die Mandelbrot-Menge.")
 #Erzeugen der Zeichenoberfläche aus dem tkinter-Modul
 #Bedeutung der Parameter:
     #fenster: Canvas befindet sich im oben erstellen Fenster
-    #width und heigt: oben festgelegte Höhe und Breite
+    #width und height: oben festgelegte Höhe und Breite
 w = tkinter.Canvas(fenster, width=xwidth, height=yheight)
 #Ohne .pack() wird diese nicht korrekt dargestellt
 w.pack()
