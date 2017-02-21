@@ -5,8 +5,11 @@ Date: 21.02.2017
 """
 
 #Der Wert n (Anzahl der Iterationsschritte) wird übergeben, Farbe soll Ausgabe sein
+#Je mehr Iterationsschritte benötigt werden, desto näher ist die Farbe des Pixels der Farbe der Mandelbrot-Menge
 
 
+#def() --> Funktionsvorschrift, die beim Aufruf über farbwahl(n) durchlaufen wird
+#Farben werden entweder "wörtlich" oder in Hexadezimalwerten angegeben
 def farbwahl(n):
     #-----------------
     #1er-Schritte
@@ -96,7 +99,9 @@ def farbwahl(n):
         color = "#60401f"
         #dunkles Braun
     else:
-        #bei 100 Iterationsschritten keine Divergenz --> Konvergenz, in der Mandelbrot-Menge
+        #bei 100 Iterationsschritten keine Divergenz, Prozess wird im Main-Programm abgebrochen
+        #--> Konvergenz, Punkt befindet sich innerhalb der Mandelbrot-Menge
         color = "black"
         #Schwarz
+    #Aus-/Rückgabe der bestimmten Farbe
     return(color)
