@@ -333,3 +333,7 @@ Temporary Items
 
 # expex forward references with \gathertags
 # End of https://www.gitignore.io/api/latex,osx,tex
+
+mainold.py
+
+__pycache__/farben.cpython-35.pyc
