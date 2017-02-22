@@ -97,7 +97,7 @@ while True:
                 n += 1
             #-------------
             #Vergeben der Farbe des Pixels wenn die Schleife abbricht --> Wert divergiert, geht gegen unendlich
-            #Modul gibt über return(color) die Farbe zurück
+            #Modul (Aufruf über .farbwahl) gibt über return(color) die Farbe zurück
             #-------------
             color = farben.farbwahl(n)
             #Erzeugung des Pixels einzelnen Pixels an der Position (cr/ci)
