@@ -40,13 +40,50 @@ w.pack()
 
 #Endlosschleife
 while True:
-    #Eingaben der Breite und Höhe des anzuzeigenden Bereichs
-    xmin = int(input("xMin eingeben: "))
-    xmax = int(input("xMax eingeben: "))
-    ymin = int(input("yMin eingeben: "))
-    
-    #Löschen aller Objekte auf der Zeichenoberfläche --> Überschreibung beim Zoom nötig
-    #Bei jeder neuen Eingabe wird das Löschen der alten Darstellung und damit das Überschreiben eingeleitet
+    #Eingabe, Anzeige gibt Abstand zur vorherigen Eingabe --> bessere Darstellung
+    print("""\
+    \n
+-----------------------------------
+Eingabe des anzuzeigenden Bereichs:
+-----------------------------------
+""")
+    #-------------
+    #Möglichkeit bei jeder Eingabe Programm sicher zu beenden
+    #Eingabe wird in float(), also Gleitkommazahl umgewandelt
+    #-------------
+    try:
+        xmin = float(input("xMin eingeben: "))
+    #Falls Eingabe nicht in float() umgewandelt werden kann
+    except ValueError:
+        entscheidung = str(input("Programm beenden? (ja/nein) "))
+        if entscheidung == "ja":
+            break
+        else:
+            print("Erneute Eingabe von xMin:")
+            xmin = float(input("xMin eingeben: "))
+    try:
+        xmax = float(input("xMax eingeben: "))
+    #Falls falscher Eingabewert
+    except ValueError:
+        entscheidung = str(input("Programm beenden? (ja/nein) "))
+        if entscheidung == "ja":
+            break
+        else:
+            print("Erneute Eingabe von xMax:")
+            xmax = float(input("xMax eingeben: "))
+    try:
+        ymin = float(input("yMin eingeben: "))
+    #Falls falscher Eingabewert
+    except ValueError:
+        entscheidung = str(input("Programm beenden? (ja/nein) "))
+        if entscheidung == "ja":
+            break
+        else:
+            print("Erneute Eingabe von yMin:")
+            ymin = float(input("yMin eingeben: "))
+
+    #Löschen aller Objekte auf der Zeichenoberfläche
+    #Überschreibung beim Zoom nötig
     w.delete("all")
     #Berechnung ymax --> eine Eingabe weniger
     ymax = (xmax - xmin) + ymin
@@ -70,14 +107,14 @@ while True:
             zi = 0
             #Wert des Imaginärteils
             zr = 0
-            
+
             #Entweder Abstand (Betrag der komplexen Zahl )zum Ursprung größer als 2 --> divergiert mit Sicherheit
             #oder maximal 100 Iterationsschritte, bis dahin keine Divergenz --> innerhalb der Menge
             #je schneller der Wert konvergiert, desto dunkler die Farbe des Pixels --> Verweis Farbmodul
 
             #Zähler Iterationsschritte initialisiert
             n = 0
-            
+
             #Abbruchbedingung
             while ((zr**2 + zi**2)<=2) and n <= 100:
                 #-------------
