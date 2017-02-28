@@ -1,14 +1,14 @@
 #farbenZuordnung.py
 """!/usr/bin/python
 -*- coding: UTF-8 -*-
-Date: 21.02.2017
+Date: 28.02.2017
 """
 
 #Der Wert n (Anzahl der Iterationsschritte) wird übergeben, Farbe soll Ausgabe sein
 #Je mehr Iterationsschritte benötigt werden, desto näher ist die Farbe des Pixels der Farbe der Mandelbrot-Menge
 
 
-#def() --> Funktionsvorschrift, die beim Aufruf über farbwahl(n) durchlaufen wird
+#def() --> Funktionsvorschrift, die beim Aufruf über farben.farbwahl(n) durchlaufen wird, hängt von n ab (übergebener Wert)
 #Farben werden entweder "wörtlich" oder in Hexadezimalwerten angegeben
 def farbwahl(n):
     #-----------------
